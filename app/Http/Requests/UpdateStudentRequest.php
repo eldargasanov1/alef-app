@@ -11,7 +11,7 @@ class UpdateStudentRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class UpdateStudentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'classroom_id' => ['integer', 'exists:App\Models\Classroom,id'],
+            'name' => ['string'],
+            'email' => ['email', 'unique:App\Models\Student,email'],
         ];
     }
 }
