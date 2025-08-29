@@ -11,7 +11,7 @@ class UpdateLectureRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class UpdateLectureRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'theme' => 'string|unique:App\Models\Lecture,theme',
+            'description' => 'string',
         ];
     }
 }
