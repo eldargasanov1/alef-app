@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateClassroomRequest extends FormRequest
+class UpdateSyllabusRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,8 @@ class UpdateClassroomRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|unique:App\Models\Classroom,name',
+            'data' => 'required|array',
+            'data.*' => 'int|exists:App\Models\Lecture,id',
         ];
     }
 }
